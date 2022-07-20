@@ -14,6 +14,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -68,9 +70,5 @@ public class User {
 	}
 	
 	
-	
-	
-	
-
 	
 }
