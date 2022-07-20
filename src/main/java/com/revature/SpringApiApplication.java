@@ -28,9 +28,10 @@ public class SpringApiApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		User u = new User("Bryan", "Ser", "NotThatBryan", "SomeoneElse", "BryanSer@gmail.com");
 		User uTwo = new User("NotBryan", "NotSer", "ThatBryan", "SomeoneElse", "NotBryanSer@gmail.com");
+		User uThree = new User("uThreefirstName","uThreeLastName","uThreeUsername", "uThreePassword", "uThreeEmail@email.com");
 		
 		userServ.add(u);
-		userServ.add(uTwo);
+		userServ.add(uThree);
 	}
 
 	
