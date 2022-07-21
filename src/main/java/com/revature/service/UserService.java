@@ -1,7 +1,6 @@
 package com.revature.service;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +20,10 @@ public class UserService {
 	UserRepository userRepo;
 	
 	//methods that call upon the Repo
-	public Set<User> findAll(){
+	public List<User> findAll(){
 		
 		//return from user repo the findAll method but stream it to a set
-		return userRepo.findAll().stream().collect(Collectors.toSet());
+		return userRepo.findAll();
 	}
 	
 	//Find by username
@@ -38,7 +37,7 @@ public class UserService {
 		if(id<=0) {
 			log.warn("Id must be greater than zero: {}", id);
 		}
-		return userRepo.getById(id);
+		return userRepo.findById(id).get();
 	}
 	
 	public User add(User u) {
