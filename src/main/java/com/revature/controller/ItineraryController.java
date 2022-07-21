@@ -37,6 +37,7 @@ public class ItineraryController {
 	
 	@GetMapping
 	public List<Itinerary> findByTag(Tag tag) {
+		System.out.println("hello there"));
 		return null;
 	}
 	
