@@ -1,6 +1,6 @@
 package com.revature.controller;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ public class UserController {
 	UserService userServ;
 	
 	@GetMapping
-	public Set<User> getAll(){
+	public List<User> getAll(){
 		//Spring Boot Web starter has Jackson Object Mapper automatically built in
 		//This will be returned as JSON
 		return userServ.findAll(); //find all from userService
