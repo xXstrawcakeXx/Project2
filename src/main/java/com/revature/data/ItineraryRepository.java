@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.revature.model.Itinerary;
+import com.revature.model.Tag;
 
 public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	
@@ -16,5 +17,6 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	@Query("FROM Itineraries WHERE slots > 0")
 	public List<Itinerary> getAvailableItineraries();
 	
-	
+	@Query(value = "SELECT * FROM itineraries WHERE itinerary_id IN (SELECT itin_id FROM itin_tags WHERE tag_id = ?1)", nativeQuery = true)
+	public List<Itinerary> findByTag(int tag_id);
 }

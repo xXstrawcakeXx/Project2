@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.ItineraryRepository;
 import com.revature.model.Itinerary;
+import com.revature.model.Tag;
 
 @Service
 public class ItineraryService {
@@ -24,6 +25,10 @@ public class ItineraryService {
 	
 	public List<Itinerary> findAvailable() {
 		return(itinRepo.getAvailableItineraries());
+	}
+	
+	public List<Itinerary> findByTag(Tag tag) {
+		return(itinRepo.findByTag(tag.getId()));
 	}
 	
 	public Itinerary getById(Integer id) {

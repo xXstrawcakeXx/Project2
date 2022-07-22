@@ -23,4 +23,14 @@ public class Tag {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tag_type")
 	private Descriptor tag;
+
+	public int getId() {
+		return id;
+	}
+
+	public Descriptor getTag() {
+		return tag;
+	}
+	
+	
 }

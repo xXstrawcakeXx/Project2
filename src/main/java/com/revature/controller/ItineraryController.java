@@ -38,10 +38,7 @@ public class ItineraryController {
 	
 	@GetMapping("{tag}")
 	public List<Itinerary> findByTag(@PathVariable("tag") Tag tag) {
-		
-		return(itinServ)
-		
-		return null;
+		return(itinServ.findByTag(tag));
 	}
 	
 }
