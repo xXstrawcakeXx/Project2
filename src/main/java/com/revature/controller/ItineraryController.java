@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +36,11 @@ public class ItineraryController {
 		return itinServ.add(i);
 	}
 	
-	@GetMapping
-	public List<Itinerary> findByTag(Tag tag) {
-		System.out.println("hello there"));
+	@GetMapping("{tag}")
+	public List<Itinerary> findByTag(@PathVariable("tag") Tag tag) {
+		
+		return(itinServ)
+		
 		return null;
 	}
 	
