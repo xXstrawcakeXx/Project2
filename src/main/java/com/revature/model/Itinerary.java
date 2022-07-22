@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -46,6 +48,11 @@ public class Itinerary {
 	private String description;
 	
 	@ManyToMany
+	@JoinTable(
+		name = "itin_tags",
+		joinColumns = @JoinColumn(name = "itin_id"),
+		inverseJoinColumns = @JoinColumn(name = "tag_id")
+	)
 	private List<Tag> tags;
 
 	public String getDestination() {
@@ -115,6 +122,16 @@ public class Itinerary {
 		this.description = description;
 	}
 	
+	
+	public double distanceToPoint(double lat, double lng) {
+		double temp = Math.PI/180;
+		double dlong = this.longitude*temp - lng*temp;
+		double dlat = this.lattitude*temp - lat*temp;
+		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(this.lattitude)* 
+				Math.cos(lat)*Math.pow(Math.sin(dlong/2),2);
+		ans = 2*Math.asin(Math.sqrt(ans))*3956; // miles
+		return(ans);
+	}
 	
 	
 	
