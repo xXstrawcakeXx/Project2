@@ -40,8 +40,6 @@ public class UserService {
 	}
 	
 	
-	
-	
 	public User getById(int id) {
 		if (id <= 0) {
 			log.warn("Id must be greater than zero: {}", id);
@@ -63,8 +61,7 @@ public class UserService {
 	}
 
 	public User update(User u) {
-		userRepo.save(u);
-		return u;
+		return userRepo.save(u);
 	}
 
 	public boolean delete(int id) {
@@ -73,15 +70,19 @@ public class UserService {
 		return !(userRepo.existsById(id));
 	}
 
+	public List<Itinerary> getCartByUserId(int us_id){
+		List<Itinerary> cart = userRepo.findById(us_id).get().getItineraries();
+		return cart;
+	}
 	
 	
 	public User addToCart(int user_id, int itin_id) {
+	
 
 		User u = userRepo.findById(user_id).get();
 		Itinerary itin = itinRepo.findById(itin_id);
 		List<Itinerary> cart = u.getItineraries();
 
-		
 		if (itin.getSlots() >= 1) {
 			
 			cart.add(itin);
@@ -91,7 +92,6 @@ public class UserService {
 			
 			itinRepo.save(itin);
 			userRepo.save(u);
-			
 			
 			return u;
 		}
