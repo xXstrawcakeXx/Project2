@@ -17,9 +17,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	public List<User> findByOrderByLastName();
 	
-	
 	@Query("FROM User WHERE email LIKE %:pattern%")
 	public List<User> findByEmailContains(String pattern); //Lets us search user by email
+	
 	
 	
 }
