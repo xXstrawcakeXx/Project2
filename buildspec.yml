@@ -4,7 +4,7 @@ phases:
   build:
     commands:
       -java -version
-      -mvn clean package -Ddb_username=${db_username} -Ddb_url=${db_url} -Ddb_password=${db_password}
+      -mvn clean package -Ddb_username=${db_user} -Ddb_url=${db_url} -Ddb_pass=${db_pass}
 artifacts:
   files:
     -'Dockerfile'
