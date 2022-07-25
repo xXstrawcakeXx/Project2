@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -32,14 +33,15 @@ public class Itinerary {
 	@Column(name = "destination")
 	private String destination;
 	
+	
 	@Column(name = "price")
 	private double price;
 	
 	@Column(name = "slots")
 	private int slots;
 	
-	@Column(name = "lattitude")
-	private double lattitude;
+	@Column(name = "latitude")
+	private double latitude;
 	
 	@Column(name = "longitude") 
 	private double longitude;
@@ -55,6 +57,9 @@ public class Itinerary {
 	)
 	private List<Tag> tags;
 
+	
+	
+	
 	public String getDestination() {
 		return destination;
 	}
@@ -63,6 +68,7 @@ public class Itinerary {
 		this.destination = destination;
 	}
 
+	@OneToMany
 	public double getPrice() {
 		return price;
 	}
@@ -80,11 +86,11 @@ public class Itinerary {
 	}
 
 	public double getLattitude() {
-		return lattitude;
+		return latitude;
 	}
 
 	public void setLattitude(double lattitude) {
-		this.lattitude = lattitude;
+		this.latitude = lattitude;
 	}
 
 	public double getLongitude() {
@@ -105,7 +111,7 @@ public class Itinerary {
 		this.destination = destination;
 		this.price = price;
 		this.slots = slots;
-		this.lattitude = lattitude;
+		this.latitude = lattitude;
 		this.longitude = longitude;
 		this.description = description;
 		this.tags = tags;
@@ -117,7 +123,7 @@ public class Itinerary {
 		this.destination = destination;
 		this.price = price;
 		this.slots = slots;
-		this.lattitude = lattitude;
+		this.latitude = lattitude;
 		this.longitude = longitude;
 		this.description = description;
 	}
@@ -126,8 +132,8 @@ public class Itinerary {
 	public double distanceToPoint(double lat, double lng) {
 		double temp = Math.PI/180;
 		double dlong = this.longitude*temp - lng*temp;
-		double dlat = this.lattitude*temp - lat*temp;
-		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(this.lattitude)* 
+		double dlat = this.latitude*temp - lat*temp;
+		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(this.latitude)* 
 				Math.cos(lat)*Math.pow(Math.sin(dlong/2),2);
 		ans = 2*Math.asin(Math.sqrt(ans))*3956; // miles
 		return(ans);

@@ -43,9 +43,13 @@ public class ItineraryService {
 		return(itinRepo.save(itin));
 	}
 	
+//	public boolean delete(int id) {
+//		itinRepo.deleteById(id);
+//		return(!itinRepo.findById(id).isPresent());
+//	}
 	public boolean delete(int id) {
 		itinRepo.deleteById(id);
-		return(!itinRepo.findById(id).isPresent());
+		return (!itinRepo.existsById(id));
 	}
 	
 }
