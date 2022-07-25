@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.model.Itinerary;
 import com.revature.model.User;
 import com.revature.service.UserService;
 
@@ -54,10 +55,10 @@ public class UserController {
 		return userServ.getByUsername(username);
 	}
 
-	@GetMapping("findHeader") // localhost:8080/users/findHeader GET
-	public User findByHeader(@RequestHeader("username") String username) {
-		return userServ.getByUsername(username);
-	}
+//	@GetMapping("findHeader") // localhost:8080/users/findHeader GET
+//	public User findByHeader(@RequestHeader("username") String username) {
+//		return userServ.getByUsername(username);
+//	}
 
 	@GetMapping("findHeader2") // localhost:8080/users/findHeader2 GET
 	public User findByHeader2(@RequestHeader HttpHeaders httpHeaders) {
@@ -70,7 +71,7 @@ public class UserController {
 	}
 
 	@PutMapping("update") // localhost:8080/users/update
-	public User update(@RequestBody User u) {
+	public User updateUser(@RequestBody User u) {
 		return userServ.update(u);
 	}
 
@@ -101,7 +102,7 @@ public class UserController {
 //	}
 
 	@PostMapping("login")
-	public ResponseEntity<?> loginPost(@RequestBody LoginObj loginObj) {
+	public ResponseEntity<?> login(@RequestBody LoginObj loginObj) {
 		
 //		can use headers for cookies and stuff (Watch W5D5 lecture @12:02:28PM @18:00mins for more)
 //		HttpHeaders headers = new HttpHeaders();
@@ -113,6 +114,13 @@ public class UserController {
 			return new ResponseEntity<String>("Unable to Log User In", HttpStatus.BAD_REQUEST);
 			//return new ResponseEntity<String>("Unable to Log User In", headers, HttpStatus.BAD_REQUEST);
 		}
+		return new ResponseEntity<User>(u, HttpStatus.OK);
+	}
+	
+	@PostMapping("addtocart/{itin_id}")
+	public ResponseEntity<User> addToCart(@PathVariable("itin_id") int itin_id, @RequestHeader("id") int id){
+		User u = userServ.addToCart(itin_id, id);
+		
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
 

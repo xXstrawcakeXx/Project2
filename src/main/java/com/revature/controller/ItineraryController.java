@@ -15,7 +15,7 @@ import com.revature.model.Tag;
 import com.revature.service.ItineraryService;
 
 @RestController
-@RequestMapping("itineraries")
+@RequestMapping("/itineraries")
 public class ItineraryController {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class ItineraryController {
 		return itinServ.findAll();
 	}
 	
-	@GetMapping
+	@GetMapping("available")
 	public List<Itinerary> getAvailable() {
 		return itinServ.findAvailable();
 	}
