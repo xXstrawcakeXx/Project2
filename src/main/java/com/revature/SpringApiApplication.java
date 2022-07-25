@@ -34,11 +34,11 @@ public class SpringApiApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		
-//		User u4New = new User("u4firstName", "u4LastName", "u4Username", "u4Password", "u4Email@email.com");
-//		User u = new User("uFirstName", "uLastName", "uUsername", "uPassword", "uEmail@email.com");
-//		Itinerary i = new Itinerary("Kabul", 0, 0, 0, 0, "Oasis");
-//		Itinerary warsaw = new Itinerary("Warsaw", 0, 20, 0, 0, "History");
-//		List<Itinerary> uItin = u.getItineraries();
+		User u4New = new User("u4firstName", "u4LastName", "u4Username", "u4Password", "u4Email@email.com");
+		User u = new User("uFirstName", "uLastName", "uUsername", "uPassword", "uEmail@email.com");
+		Itinerary i = new Itinerary("Kabul", 0, 0, 0, 0, "Oasis");
+		Itinerary warsaw = new Itinerary("Warsaw", 0, 20, 0, 0, "History");
+		List<Itinerary> uItin = u.getItineraries();
 //		iServ.add(warsaw);
 //		iServ.add(i);
 //		uServ.add(u);
