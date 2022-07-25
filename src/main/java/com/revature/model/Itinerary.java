@@ -124,11 +124,10 @@ public class Itinerary {
 	
 	
 	public double distanceToPoint(double lat, double lng) {
-		double temp = Math.PI/180;
-		double dlong = this.longitude*temp - lng*temp;
-		double dlat = this.lattitude*temp - lat*temp;
-		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(this.lattitude)* 
-				Math.cos(lat)*Math.pow(Math.sin(dlong/2),2);
+		double dlong = Math.toRadians(this.longitude - lng);
+		double dlat = Math.toRadians(this.lattitude - lat);
+		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(Math.toRadians(this.lattitude))* 
+				Math.cos(Math.toRadians(lat))*Math.pow(Math.sin(dlong/2),2);
 		ans = 2*Math.asin(Math.sqrt(ans))*3956; // miles
 		return(ans);
 	}
