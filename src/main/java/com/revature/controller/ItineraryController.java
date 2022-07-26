@@ -19,6 +19,7 @@ import com.revature.service.ItineraryService;
 @RestController
 @RequestMapping("/itineraries")
 @CrossOrigin("*") // Helps with endpoint 
+
 public class ItineraryController {
 	
 	@Autowired
