@@ -95,9 +95,9 @@ public class UserService {
 			cart.add(itin);
 			u.setItineraries(cart);
 
-			itinRepo.addToCart(itin_id);
+			//itinRepo.addToCart(itin_id);
 
-			itin.setSlots(itin.getSlots() - 1);
+			//itin.setSlots(itin.getSlots() - 1);
 			//userRepo.update(u.getEmail(), u.getFirstName(), u.getLastName(), u.getPassword(), u.getUsername(),
 			//		u.getId());
 			userRepo.save(u);
@@ -124,6 +124,32 @@ public class UserService {
 			return true;
 		}
 		return false;
+	}
+	
+	
+	public User checkout(int user_id) {
+		User u = userRepo.findById(user_id).get();
+		//Itinerary itin = itinRepo.findById(itin_id);
+		List<Itinerary> cart = u.getItineraries();
+		
+		//return null if any of the items in the cart have <=0 slots
+		for(Itinerary it: cart) {
+			if(it.getSlots()<=0) {
+				return null;
+			}
+		}	
+		//if not returned null from previous for-loop, then decrease all itin slots in cart by 1
+		for(Itinerary it: cart) {
+				itinRepo.decreaseItinSlot(it.getId());
+		}
+		
+		//clear cart and set java object User u's cart to the empty cart
+		cart.clear();
+		u.setItineraries(cart);
+		
+		//now save User u's itinerary changes to the database and return u
+		userRepo.save(u);
+		return u;
 	}
 
 }
