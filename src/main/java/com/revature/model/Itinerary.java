@@ -32,6 +32,8 @@ public class Itinerary {
 	@Column(name = "destination")
 	private String destination;
 	
+	private boolean active;
+	
 	@Column(name = "price")
 	private double price;
 	
@@ -98,6 +100,18 @@ public class Itinerary {
 	public int getId() {
 		return id;
 	}
+	
+	public boolean isActive() {
+		return active;
+	}
+	
+	public void enable() {
+		this.active = true;
+	}
+	
+	public void disable() {
+		this.active = false;
+	}
 
 	public Itinerary(String destination, double price, int slots, double lattitude, double longitude,
 			String description, List<Tag> tags) {
@@ -109,6 +123,7 @@ public class Itinerary {
 		this.longitude = longitude;
 		this.description = description;
 		this.tags = tags;
+		this.active = false;
 	}
 
 	public Itinerary(String destination, double price, int slots, double lattitude, double longitude,
@@ -120,6 +135,7 @@ public class Itinerary {
 		this.lattitude = lattitude;
 		this.longitude = longitude;
 		this.description = description;
+		this.active = false;
 	}
 	
 	
