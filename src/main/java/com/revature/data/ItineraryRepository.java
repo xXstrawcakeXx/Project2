@@ -27,6 +27,7 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	@Query(value = "SELECT * FROM itineraries WHERE itinerary_id IN (SELECT itin_id FROM itin_tags WHERE tag_id = ?1)", nativeQuery = true)
 	public List<Itinerary> findByTag(int tag_id);
 	
+	
 	 
 	
 	@Modifying
@@ -40,7 +41,7 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	public int removeFromCart(@Param("it_id") int itiner_id);
 
 	
-	@Query("SELECT * FROM itineraries WHERE active = false")
+	@Query(value = "SELECT * FROM itineraries WHERE active = false", nativeQuery = true)
 	public List<Itinerary> getInactiveItineraries(); 
 	
 	
