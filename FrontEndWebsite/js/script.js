@@ -71,3 +71,56 @@ var swiper = new Swiper(".review-slider", {
         },
     },
 });
+
+
+// Itinerary Additions 
+
+let itineraries;
+
+let itineraryContainer = document.getElementById('itinerary-container');
+console.log(itineraryContainer);
+
+    // for loop to populate
+    function populateItinerary(itineraries){
+        for(itinerary of itineraries){
+            //For each itinerary in the intinerary list, create a new div
+            let cDiv = document.createElement('div');
+            console.log(cDiv);
+    
+            //set the innerHTML of the new div
+            cDiv.innerHTML = `
+                <img src="images/AKLake.JPG" alt="">
+                <div class = "content">
+                    <h3> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
+                    <p>${itinerary.description}</p>
+                
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="price"> ${itinerary.price} </div>
+                    <a href="#" class="btn">Book Now!</a>
+                </div>
+            `;
+    
+            console.log(cDiv);
+            cDiv.setAttribute('class', 'box');
+    
+            //Finally we can append the itineraries
+            itineraryContainer.append(cDiv);
+        }
+    }
+    
+    const URL = 'http://localhost:8080';
+    
+    (async () => {
+        let req = await fetch(`${URL}/itineraries`);
+        let res = await req.json();
+        console.log(res);
+        courses = res;
+        courseContainer.innerHTML="";
+        populateItinerary(itineraries);
+    })();

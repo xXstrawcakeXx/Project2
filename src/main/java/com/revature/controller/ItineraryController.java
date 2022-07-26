@@ -14,6 +14,7 @@ import com.revature.model.Itinerary;
 import com.revature.model.Tag;
 import com.revature.service.ItineraryService;
 
+//WORKS ON POSTMAN
 @RestController
 @RequestMapping("/itineraries")
 public class ItineraryController {
@@ -21,21 +22,25 @@ public class ItineraryController {
 	@Autowired
 	ItineraryService itinServ;
 	
+	//WORKS ON POSTMAN (SAME AS @RequestMapping /itineraries)
 	@GetMapping
 	public List<Itinerary> getAll() {
 		return itinServ.findAll();
 	}
 	
+	//WORKS ON POSTMAN
 	@GetMapping("available")
 	public List<Itinerary> getAvailable() {
 		return itinServ.findAvailable();
 	}
 	
+	//WORKS ON POSTMAN
 	@PostMapping
 	public Itinerary createNewItinerary(@RequestBody Itinerary i) {
 		return itinServ.add(i);
 	}
 	
+	//not tested yet
 	@GetMapping("{tag}")
 	public List<Itinerary> findByTag(@PathVariable("tag") Tag tag) {
 		return(itinServ.findByTag(tag));

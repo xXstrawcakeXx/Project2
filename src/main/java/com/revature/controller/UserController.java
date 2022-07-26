@@ -29,6 +29,7 @@ public class UserController {
 	@Autowired
 	UserService userServ;
 
+	//WORKS ON POSTMAN
 	@GetMapping // localhost:8080/users GET
 	public List<User> getAll() {
 		// Spring Boot Web starter has Jackson Object Mapper automatically built in
@@ -36,6 +37,7 @@ public class UserController {
 		return userServ.findAll(); // find all from userService
 	}
 
+	//WORKS ON POSTMAN
 	@GetMapping("find/{username}") // localhost:8080/users/find/username GET we're going to extract the username
 	public User findByUsername(@PathVariable("username") String username) {
 		return userServ.getByUsername(username);
@@ -49,7 +51,9 @@ public class UserController {
 	// parameter
 	// can add if statements if "username" does not exist
 
-	@GetMapping("findQuery") // localhost:8080/users/find/findQuery?username=TEST GET we're going to extract
+	
+	//WORKS ON POSTMAN
+	@GetMapping("findQuery") // localhost:8080/users/findQuery?username=TEST GET we're going to extract
 								// the username TEST
 	public User findByUsernameRequest(@RequestParam("username") String username) {
 		return userServ.getByUsername(username);
@@ -60,21 +64,25 @@ public class UserController {
 //		return userServ.getByUsername(username);
 //	}
 
-	@GetMapping("findHeader2") // localhost:8080/users/findHeader2 GET
-	public User findByHeader2(@RequestHeader HttpHeaders httpHeaders) {
-		return userServ.getByUsername(httpHeaders.getFirst("username"));
-	}
+	
+//	@GetMapping("findHeader2") // localhost:8080/users/findHeader2 GET
+//	public User findByHeader2(@RequestHeader HttpHeaders httpHeaders) {
+//		return userServ.getByUsername(httpHeaders.getFirst("username"));
+//	}
 
+	//WORKS ON POSTMAN (USERNAME AND EMAIL MUST BE UNIQUE OR WILL RETURN AN ERROR)
 	@PostMapping
 	public User addNewUser(@RequestBody User user) {
 		return userServ.add(user);
 	}
 
+	//WORKS ON POSTMAN
 	@PutMapping("update") // localhost:8080/users/update
 	public User updateUser(@RequestBody User u) {
 		return userServ.update(u);
 	}
 
+	//WORKS ON POSTMAN
 	@DeleteMapping("delete/{id}") // localhost:8080/users/delete/1
 	public boolean deleteUser(@PathVariable("id") int id) {
 		return userServ.delete(id);
@@ -101,6 +109,7 @@ public class UserController {
 //		return u;
 //	}
 
+	//WORKS ON POSTMAN (IF USER ENTERS WRONG PASSWORD, GET ERROR)
 	@PostMapping("login")
 	public ResponseEntity<?> login(@RequestBody LoginObj loginObj) {
 		
@@ -117,9 +126,19 @@ public class UserController {
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
 	
+	//OMG IT WORKS ON POSTMAN FINALLYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 	@PostMapping("addtocart/{itin_id}")
 	public ResponseEntity<User> addToCart(@PathVariable("itin_id") int itin_id, @RequestHeader("id") int id){
 		User u = userServ.addToCart(itin_id, id);
+		
+		return new ResponseEntity<User>(u, HttpStatus.OK);
+	}
+	
+	//WORKS ON POSTMANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+	@DeleteMapping("deletefromcart/{itin_id}")
+	public ResponseEntity<User> deleteFromCart(@PathVariable("itin_id") int itin_id, @RequestHeader("id") int id){
+		User u = userServ.getById(id);
+		userServ.removeFromCart(itin_id, id);
 		
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
