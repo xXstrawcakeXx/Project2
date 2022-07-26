@@ -38,8 +38,7 @@ public class UserService {
 		return userRepo.findByUsername(username)
 				.orElseThrow(() -> new UserNotFoundException("No User found with username: " + username));
 	}
-	
-	
+
 	public User getById(int id) {
 		if (id <= 0) {
 			log.warn("Id must be greater than zero: {}", id);
@@ -60,61 +59,71 @@ public class UserService {
 		return returnedUser;
 	}
 
+	
+	
 	public User update(User u) {
+//		return userRepo.update(u.getEmail(), u.getFirstName(), u.getLastName(), u.getPassword(), u.getUsername(),
+//				u.getId());
 		return userRepo.save(u);
 	}
 
+	
+	
 	public boolean delete(int id) {
 		userRepo.deleteById(id);
 		// validates if deletion went through
 		return !(userRepo.existsById(id));
 	}
 
-	public List<Itinerary> getCartByUserId(int us_id){
+	
+	
+	public List<Itinerary> getCartByUserId(int us_id) {
 		List<Itinerary> cart = userRepo.findById(us_id).get().getItineraries();
 		return cart;
 	}
+
 	
 	
 	public User addToCart(int user_id, int itin_id) {
-	
 
 		User u = userRepo.findById(user_id).get();
 		Itinerary itin = itinRepo.findById(itin_id);
-		List<Itinerary> cart = u.getItineraries();
 
 		if (itin.getSlots() >= 1) {
-			
+
+			List<Itinerary> cart = u.getItineraries();
 			cart.add(itin);
 			u.setItineraries(cart);
-			
-			itin.setSlots(itin.getSlots()-1);
-			
-			itinRepo.save(itin);
+
+			itinRepo.addToCart(itin_id);
+
+			itin.setSlots(itin.getSlots() - 1);
+			//userRepo.update(u.getEmail(), u.getFirstName(), u.getLastName(), u.getPassword(), u.getUsername(),
+			//		u.getId());
 			userRepo.save(u);
-			
+
 			return u;
 		}
 		return null;
 	}
+
 	
 	
-	
-	public boolean removeItemFromCart(int user_id, int itin_id) {
+	public boolean removeFromCart(int user_id, int itin_id) {
 		User u = userRepo.findById(user_id).get();
 		Itinerary itin = itinRepo.findById(itin_id);
 		List<Itinerary> cart = u.getItineraries();
-		
-		if(cart.contains(itin)){
+
+		if (cart.contains(itin)) {
 			cart.remove(itin);
 			u.setItineraries(cart);
-			
+
+//			userRepo.update(u.getEmail(), u.getFirstName(), u.getLastName(), u.getPassword(), u.getUsername(),
+//					u.getId());
 			userRepo.save(u);
 			return true;
 		}
 		return false;
 	}
-	
-	
 
 }

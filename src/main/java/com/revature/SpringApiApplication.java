@@ -39,13 +39,19 @@ public class SpringApiApplication implements CommandLineRunner {
 		Itinerary i = new Itinerary("Kabul", 0, 0, 0, 0, "Oasis");
 		Itinerary warsaw = new Itinerary("Warsaw", 0, 20, 0, 0, "History");
 		List<Itinerary> uItin = u.getItineraries();
+		//uServ.add(u4New);
+		
 //		iServ.add(warsaw);
 //		iServ.add(i);
 //		uServ.add(u);
 //		uServ.add(u4New);
 		
 		
-		//uServ.addToCart(uServ.getById(2).getId(), 2);
+		//uServ.addToCart(1, 1);
+		
+		
+		
+		
 		
 	
 		
