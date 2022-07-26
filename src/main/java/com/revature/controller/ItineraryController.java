@@ -3,6 +3,7 @@ package com.revature.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.revature.service.ItineraryService;
 //WORKS ON POSTMAN
 @RestController
 @RequestMapping("/itineraries")
+@CrossOrigin("*") // Helps with endpoint 
 public class ItineraryController {
 	
 	@Autowired
