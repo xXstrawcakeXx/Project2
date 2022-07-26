@@ -77,7 +77,7 @@ var swiper = new Swiper(".review-slider", {
 
 let itineraries;
 
-let itineraryContainer = document.getElementById('.packages .box-container');
+let itineraryContainer = document.getElementById('itinerary-container');
 console.log(itineraryContainer);
 
     // for loop to populate
