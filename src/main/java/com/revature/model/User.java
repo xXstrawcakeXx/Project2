@@ -60,7 +60,8 @@ public class User {
 	private String email;
 
 	@ManyToMany
-	@JoinTable(name = "us_itin_cart", 
+	@JoinTable(
+		name = "us_itin_cart", 
 		joinColumns = @JoinColumn(name = "us_id"),
 		inverseJoinColumns = @JoinColumn(name = "itin_id"))
 	List<Itinerary> itineraries;
