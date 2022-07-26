@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Account</title>
+    <title>User Profile</title>
     <!-- Link for swiping mechanism in Reviews-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
     <!-- Using cloud repository for stuff like logos, fonts, and icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/User.css">
 </head>
+
 <body>
 
     <!-- Header Section-->
@@ -21,12 +23,12 @@
         <div id="menu-bar" class="fas fa-bars"></div> <!-- This menu bar doesn't work and idk why-->
 
         <div class="together">
-        <img src="images/AoTLogo.png" class = "frontLogo">
-        <a href="#" class="logo"><span>B</span>eyond</a>
+            <img src="images/AoTLogo.png" class="frontLogo">
+            <a href="index.html" class="logo"><span>B</span>eyond</a>
         </div>
 
         <nav class="navbar">
-            <a href="home">home</a>
+            <a href="index.html">home</a>
             <a href="booking">book</a>
             <a href="packages">packages</a>
             <a href="services">services</a>
@@ -38,8 +40,25 @@
             <i class="fas fa-user" id="login-btn"></i>
             <i class="fas fa-shopping-cart" id="cart-btn"></i>
         </div>
-</head>
-<body>
-    
+
+        <form action="" class="searchBarContainer">
+            <input type="search" id="search-bar" placeholder="Input search">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+
+    </header>
+
+    <div id="main">
+    </div>
+    <h1 id="header"> Account Information </h1>
+
+    <!-- There are basically two things we need to do on this form
+    One is get the User's Data and Display it
+    Two is add in an update form that'll send a put (update) request-->
+
+    <div id="user-container"></div>
+
+    </div>
+<script src="js/User.js"></script>
 </body>
 </html>
