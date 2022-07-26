@@ -27,6 +27,10 @@ public class ItineraryService {
 		return(itinRepo.getAvailableItineraries());
 	}
 	
+	public List<Itinerary> findInactive() {
+		return(itinRepo.getInactiveItineraries());
+	}
+	
 	public List<Itinerary> findByTag(Tag tag) {
 		return(itinRepo.findByTag(tag.getId()));
 	}
@@ -43,10 +47,6 @@ public class ItineraryService {
 		return(itinRepo.save(itin));
 	}
 	
-//	public boolean delete(int id) {
-//		itinRepo.deleteById(id);
-//		return(!itinRepo.findById(id).isPresent());
-//	}
 	public boolean delete(int id) {
 		itinRepo.deleteById(id);
 		return (!itinRepo.existsById(id));

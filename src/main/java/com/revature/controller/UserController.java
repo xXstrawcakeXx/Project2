@@ -23,7 +23,10 @@ import com.revature.service.UserService;
 @RestController // automatically infers the return value of all methods will be within an
 				// HttpResponseBody
 @RequestMapping("/users") // makes all methods available through /users
-@CrossOrigin("*")
+n("*")
+=======
+@CrossOrigin("*") // Helps with connecting endpoints
+
 public class UserController {
 
 	@Autowired

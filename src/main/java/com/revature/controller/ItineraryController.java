@@ -18,7 +18,8 @@ import com.revature.service.ItineraryService;
 //WORKS ON POSTMAN
 @RestController
 @RequestMapping("/itineraries")
-@CrossOrigin("*")
+@CrossOrigin("*") // Helps with endpoint 
+
 public class ItineraryController {
 	
 	@Autowired
@@ -47,5 +48,6 @@ public class ItineraryController {
 	public List<Itinerary> findByTag(@PathVariable("tag") Tag tag) {
 		return(itinServ.findByTag(tag));
 	}
+	
 	
 }
