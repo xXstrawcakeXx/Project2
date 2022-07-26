@@ -89,11 +89,12 @@ console.log(itineraryContainer);
     
             //set the innerHTML of the new div
             cDiv.innerHTML = `
+           
                 <img src="images/AKLake.JPG" alt="">
                 <div class = "content">
                     <h3> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
                     <p>${itinerary.description}</p>
-                
+                    <p> Open Slots: ${itinerary.slots}</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -104,10 +105,12 @@ console.log(itineraryContainer);
                     <div class="price"> ${itinerary.price} </div>
                     <a href="#" class="btn">Book Now!</a>
                 </div>
+           
             `;
     
             console.log(cDiv);
             cDiv.setAttribute('class', 'box');
+            cDiv.setAttribute('style', 'width:400px;');
     
             //Finally we can append the itineraries
             itineraryContainer.append(cDiv);
@@ -124,3 +127,5 @@ console.log(itineraryContainer);
         itineraryContainer.innerHTML="";
         populateItinerary(itineraries);
     })();
+
+// End of Itinerary Additions 
