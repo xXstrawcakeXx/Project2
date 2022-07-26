@@ -40,8 +40,8 @@ public class Itinerary {
 	@Column(name = "slots")
 	private int slots;
 	
-	@Column(name = "lattitude")
-	private double lattitude;
+	@Column(name = "latitude")
+	private double latitude;
 	
 	@Column(name = "longitude") 
 	private double longitude;
@@ -81,12 +81,12 @@ public class Itinerary {
 		this.slots = slots;
 	}
 
-	public double getLattitude() {
-		return lattitude;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setLattitude(double lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(double lattitude) {
+		this.latitude = lattitude;
 	}
 
 	public double getLongitude() {
@@ -113,26 +113,26 @@ public class Itinerary {
 		this.active = false;
 	}
 
-	public Itinerary(String destination, double price, int slots, double lattitude, double longitude,
+	public Itinerary(String destination, double price, int slots, double latitude, double longitude,
 			String description, List<Tag> tags) {
 		super();
 		this.destination = destination;
 		this.price = price;
 		this.slots = slots;
-		this.lattitude = lattitude;
+		this.latitude = latitude;
 		this.longitude = longitude;
 		this.description = description;
 		this.tags = tags;
 		this.active = false;
 	}
 
-	public Itinerary(String destination, double price, int slots, double lattitude, double longitude,
+	public Itinerary(String destination, double price, int slots, double latitude, double longitude,
 			String description) {
 		super();
 		this.destination = destination;
 		this.price = price;
 		this.slots = slots;
-		this.lattitude = lattitude;
+		this.latitude = latitude;
 		this.longitude = longitude;
 		this.description = description;
 		this.active = false;
@@ -141,8 +141,8 @@ public class Itinerary {
 	
 	public double distanceToPoint(double lat, double lng) {
 		double dlong = Math.toRadians(this.longitude - lng);
-		double dlat = Math.toRadians(this.lattitude - lat);
-		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(Math.toRadians(this.lattitude))* 
+		double dlat = Math.toRadians(this.latitude - lat);
+		double ans = Math.pow(Math.sin(dlat/2),2) + Math.cos(Math.toRadians(this.latitude))* 
 				Math.cos(Math.toRadians(lat))*Math.pow(Math.sin(dlong/2),2);
 		ans = 2*Math.asin(Math.sqrt(ans))*3956; // miles
 		return(ans);
