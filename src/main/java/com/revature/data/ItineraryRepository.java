@@ -27,6 +27,9 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	@Query(value = "SELECT * FROM itineraries WHERE itinerary_id IN (SELECT itin_id FROM itin_tags WHERE tag_id = ?1)", nativeQuery = true)
 	public List<Itinerary> findByTag(int tag_id);
 	
+	
+	 
+	
 	@Modifying
 	@Transactional
 	@Query(value="UPDATE itineraries SET slots=slots-1 WHERE \"itinerary_id\" =:itiner_id AND slots>0", nativeQuery = true)
@@ -34,8 +37,12 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	
 	@Modifying
 	@Transactional
-	@Query(value="UPDATE itineraries SET slots=slots+1 WHERE itinerary_id=:it_id AND slots>0", nativeQuery = true)
+	@Query(value="UPDATE itineraries SET slots=slots+1 WHERE itinerary_id=:it_id", nativeQuery = true)
 	public int removeFromCart(@Param("it_id") int itiner_id);
+
+	
+	@Query(value = "SELECT * FROM itineraries WHERE active = false", nativeQuery = true)
+	public List<Itinerary> getInactiveItineraries(); 
 	
 	
 }
