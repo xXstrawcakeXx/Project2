@@ -355,6 +355,11 @@ Packages Style Begins Here */
     flex-wrap: wrap;
     gap: 2rem;
 }
+.packages #itinerary-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
 
 .packages .box-container .box{
     flex: 1 1 30rem;
@@ -362,6 +367,7 @@ Packages Style Begins Here */
     overflow: hidden;
     box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
 }
+
 
 .packages .box-container .box img{
     height: 25rem;
