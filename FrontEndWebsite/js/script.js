@@ -32,12 +32,12 @@ function submitLogin(event) {
 }
 
 // constant URL
-const URL = "http://localhost:8080";
+const URL = "http://project2-env.eba-yp8rsa4c.us-east-2.elasticbeanstalk.com";
 
 // This is getting the value of what is inputed in the username and password fields
 // and sends a post request to the database
 let postLogin = async () => {
-    let username = document.getElementById('login-text').value;
+    let username = document.getElementById('login-username').value;
     let password = document.getElementById('login-password').value;
 
     let loginObj = {
@@ -74,20 +74,9 @@ loginClose.addEventListener('click', () => {
 });
 
 // Cart DropDown Functionality
-let cartFormBtn = document.querySelector('#cart-btn');
-let cartForm = document.querySelector('.cartbox-container');
-let cartClose = document.querySelector('#cart-close');
-
-cartFormBtn.addEventListener('click', () =>{
-    cartForm.classList.add('active');
-});
-
-cartClose.addEventListener('click', () =>{
-    cartForm.classList.remove('active');
-});
+    // MOVED TO SEPERATE JS FILE
 
     // CART MAPPING FUNCTIONALITY FOR STATIC ITINERARIES**********************************************************************************
-    
 
 
     // END CART MAPPING FOR STATIC ITINERARIES*******************************************************************************************
@@ -179,8 +168,6 @@ console.log(itineraryContainer);
             itineraryContainer.append(cDiv);
         }
     }
-    
-    const URL = 'http://localhost:8080';
     
     (async () => {
         let req = await fetch(`${URL}/itineraries`);
