@@ -19,7 +19,12 @@ function populatePerson(person){
     `
 }
 
+const URL = 'http://localhost:8080'
+
 // Fetch function to get the information for the user
 (async () =>{
-    
+    let req = await fetch(`${URL}/find/user${sessionStorage.getItem("username")}`)
+    let res = await req.json();
+    personContainer.innerHTML = "";
+    populatePerson(res);
 })

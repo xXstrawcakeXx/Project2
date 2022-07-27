@@ -57,7 +57,8 @@ public class Itinerary {
 	)
 	private List<Tag> tags;
 	
-	
+	@Column(name = "image")
+	private String image;
 	
 	
 	

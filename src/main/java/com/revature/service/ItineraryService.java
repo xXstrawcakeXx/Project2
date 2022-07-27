@@ -35,6 +35,10 @@ public class ItineraryService {
 		return(itinRepo.findByTag(tag.getId()));
 	}
 	
+	public String findImage(int id) {
+		return itinRepo.getItinImage(id);
+	}
+	
 	public Itinerary getById(Integer id) {
 		return(itinRepo.findById(id).get());
 	}
@@ -51,5 +55,6 @@ public class ItineraryService {
 		itinRepo.deleteById(id);
 		return (!itinRepo.existsById(id));
 	}
+	
 	
 }
