@@ -25,8 +25,10 @@ public class OrderHistory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "price")
 	private double price;
 	
+	@Column(name = "date")
 	private String date;
 	
 	@OneToOne

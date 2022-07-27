@@ -56,7 +56,7 @@ public class ItineraryController {
 	}
 	
 	@PutMapping("update") // localhost:8080/users/update
-	public Itinerary updateUser(@RequestBody Itinerary i) {
+	public Itinerary updateItin(@RequestBody Itinerary i) {
 		return itinServ.update(i);
 	}
 }
