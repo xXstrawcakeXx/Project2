@@ -65,6 +65,8 @@ public class User {
 		joinColumns = @JoinColumn(name = "us_id"),
 		inverseJoinColumns = @JoinColumn(name = "itin_id"))
 	List<Itinerary> itineraries;
+	
+	
 
 	
 	
