@@ -12,7 +12,7 @@
     <!-- Using cloud repository for stuff like logos, fonts, and icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="css/User.css">
+    <link rel="stylesheet" href="css/user.css">
 </head>
 
 <body>
@@ -57,6 +57,24 @@
     Two is add in an update form that'll send a put (update) request-->
 
     <div id="user-container"></div>
+
+    <div class = "updatebox">
+        <buton onclick="toggleUpdateForm()">Update Info</buton>
+            <form id = "updatebox" hidden>
+                <p>First Name</p>
+                <input id = "first" type = "first" name="Enter First Name">
+                <p>Last Name</p>
+                <input id = "last" type = "last" name="Enter Last Name">
+                <p>Email</p>
+                <input id = "email" type = "email" name="Enter Email">
+                <p>UserName</p>
+                <input id = "username" type = "username" name="Enter Username">
+                <p>Password</p>
+                <input id="password" type="password" name="Enter Password">
+                <input type="submit" type="" value="Update">
+            </form>
+
+    </div>
 
     </div>
 <script src="js/user.js"></script>
