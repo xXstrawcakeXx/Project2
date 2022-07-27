@@ -46,16 +46,43 @@ bookBtn.addEventListener('click', () =>{
     alert("Please log in to view the cart");
   }
   else{
-    var name = document.getElementById('bookname');
+    var name = document.getElementById('bookname').innerHTML;
     console.log(name);
-    var description = document.getElementById('bookdescription');
+    var description = document.getElementById('bookdescription').innerHTML;
     console.log(description);
-    var quantity = document.getElementById('bookslot');
+    var quantity = document.getElementById('bookslot').innerHTML;
     console.log(quantity);
-    var price = document.getElementById('bookprice');
+    var price = document.getElementById('bookprice').innerHTML;
     console.log(price);
+
+    let cartContainer = document.getElementById('cartItemContainer');
+    let cDiv = document.createElement('div');
+    console.log(cDiv);
+
+    //set the innerHTML of the new div
+    cDiv.innerHTML = `
+   
+            <img src="images/AoTLogo.png"> 
+            <div class="details">
+            <h3> ${name} </h3>
+            <p>${description}
+            <span class="quantity">Quantity: 1</span>
+            <span class="price">Price: ${price}</span>
+            </p>
+            </div>
+            <div class="cancel"><i class="fas fa-window-close"></i></div>
+   
+    `;
+
+
+    console.log(cDiv);
+    cDiv.setAttribute('class', 'cart-item');
+
+    //Finally we can append the itineraries
+    cartContainer.append(cDiv);
   }
 })
+
 
 
 
