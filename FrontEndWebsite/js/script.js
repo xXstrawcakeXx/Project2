@@ -154,7 +154,7 @@ console.log(itineraryContainer);
                         <i class="fas fa-star"></i>
                     </div>
                     <div class="price"> ${itinerary.price} </div>
-                    <a href="#" class="btn">Book Now!</a>
+                    <input type="submit" class="btn" id= "bookbtn" value="Book Now!">
                 </div>
            
             `;
