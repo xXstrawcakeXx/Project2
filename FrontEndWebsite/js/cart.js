@@ -44,6 +44,7 @@ bookBtn.addEventListener('click', () =>{
     alert("Please log in to view the cart");
   }
   
+  
 })
 
 

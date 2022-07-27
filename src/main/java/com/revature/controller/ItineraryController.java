@@ -55,7 +55,7 @@ public class ItineraryController {
 		return (itinServ.findImage(id));
 	}
 	
-	@PutMapping("update") // localhost:8080/users/update
+	@PostMapping("update") // localhost:8080/users/update
 	public Itinerary updateItin(@RequestBody Itinerary i) {
 		return itinServ.update(i);
 	}
