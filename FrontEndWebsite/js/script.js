@@ -74,20 +74,9 @@ loginClose.addEventListener('click', () => {
 });
 
 // Cart DropDown Functionality
-let cartFormBtn = document.querySelector('#cart-btn');
-let cartForm = document.querySelector('.cartbox-container');
-let cartClose = document.querySelector('#cart-close');
-
-cartFormBtn.addEventListener('click', () =>{
-    cartForm.classList.add('active');
-});
-
-cartClose.addEventListener('click', () =>{
-    cartForm.classList.remove('active');
-});
+    // MOVED TO SEPERATE JS FILE
 
     // CART MAPPING FUNCTIONALITY FOR STATIC ITINERARIES**********************************************************************************
-    
 
 
     // END CART MAPPING FOR STATIC ITINERARIES*******************************************************************************************
@@ -180,7 +169,6 @@ console.log(itineraryContainer);
         }
     }
     
-    const URL = 'http://localhost:8080';
     
     (async () => {
         let req = await fetch(`${URL}/itineraries`);
