@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Itinerary;
 import com.revature.model.Tag;
+import com.revature.model.User;
 import com.revature.service.ItineraryService;
 
 //WORKS ON POSTMAN
@@ -48,5 +50,13 @@ public class ItineraryController {
 		return(itinServ.findByTag(tag));
 	}
 	
+	@GetMapping("image/{id}")
+	public String getImageString(@PathVariable("id") int id) {
+		return (itinServ.findImage(id));
+	}
 	
+	@PutMapping("update") // localhost:8080/users/update
+	public Itinerary updateItin(@RequestBody Itinerary i) {
+		return itinServ.update(i);
+	}
 }

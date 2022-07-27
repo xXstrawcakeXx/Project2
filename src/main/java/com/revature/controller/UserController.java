@@ -43,32 +43,13 @@ public class UserController {
 		return userServ.getByUsername(username);
 	}
 
-	// Now everything below is not necessarily best practice but it'll be useful to
-	// know I guesssssssss
 
-	// searches whatever is after "Query?"
-	// if there is a "username" after Query?, then use String username from method
-	// parameter
-	// can add if statements if "username" does not exist
-
-	
 	//WORKS ON POSTMAN
 	@GetMapping("findQuery") // localhost:8080/users/findQuery?username=TEST GET we're going to extract
 								// the username TEST
 	public User findByUsernameRequest(@RequestParam("username") String username) {
 		return userServ.getByUsername(username);
 	}
-
-//	@GetMapping("findHeader") // localhost:8080/users/findHeader GET
-//	public User findByHeader(@RequestHeader("username") String username) {
-//		return userServ.getByUsername(username);
-//	}
-
-	
-//	@GetMapping("findHeader2") // localhost:8080/users/findHeader2 GET
-//	public User findByHeader2(@RequestHeader HttpHeaders httpHeaders) {
-//		return userServ.getByUsername(httpHeaders.getFirst("username"));
-//	}
 
 	//WORKS ON POSTMAN (USERNAME AND EMAIL MUST BE UNIQUE OR WILL RETURN AN ERROR)
 	@PostMapping
@@ -88,34 +69,11 @@ public class UserController {
 		return userServ.delete(id);
 	}
 
-	// DONT USE THIS METHOD: NOT SECURE
-//	@GetMapping("login/{username}/{password}") //localhost:8080/users/login/uThreeUsername/uThreePassword
-//	public User login(@PathVariable("username") String username, @PathVariable("password") String password) {
-//		User u = userServ.getByUsername(username);
-//		
-//		if(!u.getPassword().equals(password)) {
-//			return null;
-//		}
-//		return u;
-//	}
-
-//	@GetMapping("/login")
-//	public User login(@RequestHeader("username") String username, @RequestHeader("password") String password) {
-//		User u = userServ.getByUsername(username);
-//		if(!u.getPassword().equals(password)) {
-//			
-//			return null;
-//		}
-//		return u;
-//	}
 
 	//WORKS ON POSTMAN (IF USER ENTERS WRONG PASSWORD, GET ERROR)
 	@PostMapping("login")
 	public ResponseEntity<?> login(@RequestBody LoginObj loginObj) {
-		
-//		can use headers for cookies and stuff (Watch W5D5 lecture @12:02:28PM @18:00mins for more)
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.add("Key", "Value");
+
 		
 		User u = userServ.getByUsername(loginObj.username);
 		if (!u.getPassword().equals(loginObj.password)) {
@@ -149,7 +107,6 @@ public class UserController {
 		userServ.checkout(user_id);
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
-
 }
 
 class LoginObj {

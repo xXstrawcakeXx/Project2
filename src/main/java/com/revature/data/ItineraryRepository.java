@@ -29,7 +29,7 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	
 	@Modifying
 	@Transactional
-	@Query(value="UPDATE itineraries SET slots=slots-1 WHERE \"itinerary_id\" =:it_id", nativeQuery = true)
+	@Query(value="UPDATE itineraries SET slots=slots-1 WHERE itinerary_id =:it_id", nativeQuery = true)
 	public int decreaseItinSlot(@Param("it_id") int itiner_id);
 	
 	@Modifying
@@ -41,5 +41,7 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Integer>{
 	@Query(value = "SELECT * FROM itineraries WHERE active = false", nativeQuery = true)
 	public List<Itinerary> getInactiveItineraries(); 
 	
+	@Query(value = "SELECT image FROM itineraries WHERE id=:it_id", nativeQuery = true)
+	public String getItinImage(@Param("it_id") int itiner_id);
 	
 }
