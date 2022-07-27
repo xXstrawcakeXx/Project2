@@ -24,7 +24,6 @@ import com.revature.service.UserService;
 				// HttpResponseBody
 @RequestMapping("/users") // makes all methods available through /users
 @CrossOrigin("*") // Helps with connecting endpoints
-
 public class UserController {
 
 	@Autowired
