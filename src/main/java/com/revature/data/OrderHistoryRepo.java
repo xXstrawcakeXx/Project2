@@ -18,6 +18,7 @@ public interface OrderHistoryRepo extends JpaRepository<OrderHistory, Integer>{
 	
 	@Query(value="SELECT * FROM orderhistory WHERE acc_owner = ?1", nativeQuery =true)
 	public List<OrderHistory> getHistoryOfUser(int user_id);
+
 	
 	@Modifying
 	@Transactional
