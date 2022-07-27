@@ -56,8 +56,8 @@
 
         <form action="">
             <h3>Login Here</h3>
-            <input type = "text" class = "box" placeholder="Enter Username">
-            <input type = "password" class = "box" placeholder="Enter password">
+            <input id = "login-text" class = "box" placeholder="Enter Username">
+            <input id = "login-password" class = "box" placeholder="Enter password">
             <input type = "submit" value = "Login" class="btn">
             <p>Forget Password? <a href="#">Click Here</a></p>
             <p>Wish to Register? <a href="Register.html">Register Here</a></p>
@@ -67,6 +67,52 @@
 
     </div>
 
+    <!-- Cart Container-->
+    <div class="cartbox-container">
+        <img src="images/Exit.jpg" id="cart-close"></i>
+            <div class="cart-box">
+                <h2>Shopping Bag</h2>
+                <div class="cart-wrapper">
+                  <div class="cart-item">
+                             <img src="images/AoTLogo.png"> 
+                             <div class="details">
+                                 <h3>Item Name</h3>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  <span class="quantity">Quantity: 1</span>
+                                     <span class="price">Price: $23.44</span>
+                                 </p>
+                             </div>
+                             <div class="cancel"><i class="fas fa-window-close"></i></div>
+                          </div>
+                  <!-- item 2 -->
+                  
+                  <div class="cart-item">
+                    <img src="images/AoTLogo.png"> 
+                    <div class="details">
+                        <h3>Item Name</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                         <span class="quantity">Quantity: 1</span>
+                            <span class="price">Price: $23.44</span>
+                        </p>
+                    </div>
+                    <div class="cancel"><i class="fas fa-window-close"></i></div>
+                 </div>
+
+                </div>
+                <div class="subtotal">Subtotal: $0.00</div>
+                <div class="checkout">Checkout</div>
+            </div>
+
+        <!-- <div class="box">
+            <h3>Items in Cart</h3>
+
+        </div>
+
+        <div class="box">
+           <div class="subtotal">Subtotal: $0.00</div>
+            <div class="checkout">Checkout</div> 
+        </div> -->
+    </div>
 
     <!-- The Home page Structure-->
     <section class="home" id="home">
@@ -153,13 +199,14 @@
 
             <!--**********************************IMPORTANT*************************************************************************-->
             <!-- Each div class box is == to a package-->
-            <div class="box">
+            <!-- Added unique identification for static packages-->
+            <div data-id="1" class="box">
 
                 <img src="images/AKLake.JPG" alt="">
                 <div class = "content">
                     <h3> <i class="fas fa-map-marker-alt"></i> Alaska </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
-                    <p>Open Slots: 0</p>
+                    <p>Open Slots: 4</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -176,10 +223,10 @@
             <div class="box">
 
                 <img src="images/WillPic1.JPG" alt="">
-                <div class = "content">
+                <div data-id="2" class = "content">
                     <h3> <i class="fas fa-map-marker-alt"></i> Switzerland </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
-                    <p>Open Slots: 0</p>
+                    <p>Open Slots: 4</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -196,10 +243,10 @@
             <div class="box">
 
                 <img src="images/WillPic2.JPG" alt="">
-                <div class = "content">
+                <div data-id="3" class = "content">
                     <h3> <i class="fas fa-map-marker-alt"></i> Yosemite National Park </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
-                    <p>Open Slots: 0</p>
+                    <p>Open Slots: 4</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
