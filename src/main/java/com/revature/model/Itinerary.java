@@ -56,6 +56,12 @@ public class Itinerary {
 		inverseJoinColumns = @JoinColumn(name = "tag_id")
 	)
 	private List<Tag> tags;
+	
+	
+	
+	
+	
+	
 
 	public String getDestination() {
 		return destination;

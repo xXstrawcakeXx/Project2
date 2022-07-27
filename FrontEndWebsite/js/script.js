@@ -123,20 +123,22 @@ let itineraries;
 let itineraryContainer = document.getElementById('itinerary-container');
 console.log(itineraryContainer);
 
-// for loop to populate
-function populateItinerary(itineraries) {
-    for (itinerary of itineraries) {
-        //For each itinerary in the intinerary list, create a new div
-        let cDiv = document.createElement('div');
-        console.log(cDiv);
 
-        //set the innerHTML of the new div
-        cDiv.innerHTML = `
+    // for loop to populate
+    function populateItinerary(itineraries){
+        for(itinerary of itineraries){
+            //For each itinerary in the intinerary list, create a new div
+            let cDiv = document.createElement('div');
+            console.log(cDiv);
+    
+            //set the innerHTML of the new div
+            cDiv.innerHTML = `
+           
                 <img src="images/AKLake.JPG" alt="">
                 <div class = "content">
                     <h3> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
                     <p>${itinerary.description}</p>
-                
+                    <p> Open Slots: ${itinerary.slots}</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -147,21 +149,28 @@ function populateItinerary(itineraries) {
                     <div class="price"> ${itinerary.price} </div>
                     <a href="#" class="btn">Book Now!</a>
                 </div>
+           
             `;
 
-        console.log(cDiv);
-        cDiv.setAttribute('class', 'box');
-
-        //Finally we can append the itineraries
-        itineraryContainer.append(cDiv);
+    
+            console.log(cDiv);
+            cDiv.setAttribute('class', 'box');
+            cDiv.setAttribute('style', 'width:400px;');
+    
+            //Finally we can append the itineraries
+            itineraryContainer.append(cDiv);
+        }
     }
-}
+    
+    const URL = 'http://localhost:8080';
+    
+    (async () => {
+        let req = await fetch(`${URL}/itineraries`);
+        let res = await req.json();
+        console.log(res);
+        itineraries = res;
+        itineraryContainer.innerHTML="";
+        populateItinerary(itineraries);
+    })();
 
-(async () => {
-    let req = await fetch(`${URL}/itineraries`);
-    let res = await req.json();
-    console.log(res);
-    itineraries = res;
-    itineraryContainer.innerHTML = "";
-    populateItinerary(itineraries);
-})();
+// End of Itinerary Additions 

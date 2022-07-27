@@ -126,20 +126,27 @@ public class UserController {
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
 	
-	//OMG IT WORKS ON POSTMAN FINALLYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+	
 	@PostMapping("addtocart/{itin_id}")
 	public ResponseEntity<User> addToCart(@PathVariable("itin_id") int itin_id, @RequestHeader("id") int id){
-		User u = userServ.addToCart(itin_id, id);
+		User u = userServ.addToCart(id, itin_id);
 		
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
 	
-	//WORKS ON POSTMANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+	
 	@DeleteMapping("deletefromcart/{itin_id}")
 	public ResponseEntity<User> deleteFromCart(@PathVariable("itin_id") int itin_id, @RequestHeader("id") int id){
 		User u = userServ.getById(id);
 		userServ.removeFromCart(itin_id, id);
 		
+		return new ResponseEntity<User>(u, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("checkout/{user_id}")
+	public ResponseEntity<User> checkout(@PathVariable("user_id") int user_id){
+		User u = userServ.getById(user_id);
+		userServ.checkout(user_id);
 		return new ResponseEntity<User>(u, HttpStatus.OK);
 	}
 
