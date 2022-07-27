@@ -3,6 +3,7 @@ package com.revature.data;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ public interface OrderHistoryRepo extends JpaRepository<OrderHistory, Integer>{
 	
 	@Query("FROM orderhistory WHERE acc_owner = ?1")
 	public List<OrderHistory> getHistoryOfUser(int user_id);
-	
+	@Modifying
 	@Query(value = "DELETE FROM orderhistory WHERE acc_owner = ?1", nativeQuery = true)
 	public void clearHistory();
 

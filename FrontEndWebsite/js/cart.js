@@ -38,12 +38,23 @@ cartClose.addEventListener('click', () =>{
 // btn event
 let bookBtn = document.querySelector('#bookbtn');
 
+
+
 bookBtn.addEventListener('click', () =>{
   if (loggedUserId == "undefined" || loggedUserId == null || !loggedUserId) {
     window.location.href = "index.html";
     alert("Please log in to view the cart");
   }
-  
+  else{
+    var name = document.getElementById('bookname');
+    console.log(name);
+    var description = document.getElementById('bookdescription');
+    console.log(description);
+    var quantity = document.getElementById('bookslot');
+    console.log(quantity);
+    var price = document.getElementById('bookprice');
+    console.log(price);
+  }
 })
 
 

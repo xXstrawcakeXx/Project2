@@ -143,9 +143,9 @@ console.log(itineraryContainer);
            
                 <img src="images/AKLake.JPG" alt="">
                 <div class = "content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
-                    <p>${itinerary.description}</p>
-                    <p> Open Slots: ${itinerary.slots}</p>
+                    <h3 id = "bookname"> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
+                    <p id="bookdescription">${itinerary.description}</p>
+                    <p> Open Slots: <p id = "bookslot"> ${itinerary.slots} </p> </p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -153,7 +153,7 @@ console.log(itineraryContainer);
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="price"> ${itinerary.price} </div>
+                    <div class="price" id = "bookprice"> ${itinerary.price} </div>
                     <input type="submit" class="btn" id= "bookbtn" value="Book Now!">
                 </div>
            
