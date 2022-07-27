@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/AKLake.JPG);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: sans-serif;
+}
+
+
+.registerbox{
+    width:350px;
+    height:620px;
+    background:#B0C4DE;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+
+
+
+.avatar {
+    width:125px;
+    height:auto;
+    border-radius:50%;
+    position: absolute;
+    top: -60px;
+    left: calc(50% - 63px);
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.registerbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.registerbox input{
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.registerbox input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom:1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.registerbox input[type="submit"]
+{
+    border: none;
+    outline:none;
+    height: 30px;
+    background: #2e0588;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.registerbox input[type="submit"] :hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.registerbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#form-close{
+    position: absolute;
+    border-radius: 100%;
+    object-fit:cover;
+    height:35px;
+    width: 35px;
+    top: 2rem;
+    right: 3rem;
+    font-size: .5rem;
+    color:#fff;
+    cursor: pointer;
+}
+
+.registerbox form p{
+    padding:.5rem 0;
+    font-size: 1.0rem;
+    color: #fff;
+}
+
+.registerbox form p a{
+    color:var(--blue);
+}
+
+.registerbox form p a:hover{
+    color:#c9f51d;
+    text-decoration: underline;
+}
+

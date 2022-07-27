@@ -24,6 +24,7 @@ public class UserService {
 
 	@Autowired
 	ItineraryRepository itinRepo;
+	
 
 	// methods that call upon the Repo
 	public List<User> findAll() {
@@ -137,7 +138,8 @@ public class UserService {
 			if(it.getSlots()<=0) {
 				return null;
 			}
-		}	
+		}
+		OrderHistoryService.saveAll(cart, userRepo.findById(user_id).get());
 		//if not returned null from previous for-loop, then decrease all itin slots in cart by 1
 		for(Itinerary it: cart) {
 				itinRepo.decreaseItinSlot(it.getId());
