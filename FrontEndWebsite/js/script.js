@@ -30,6 +30,24 @@ loginClose.addEventListener('click', () =>{
     loginForm.classList.remove('active');
 });
 
+// Cart DropDown Functionality
+let cartFormBtn = document.querySelector('#cart-btn');
+let cartForm = document.querySelector('.cartbox-container');
+let cartClose = document.querySelector('#cart-close');
+
+cartFormBtn.addEventListener('click', () =>{
+    cartForm.classList.add('active');
+});
+
+cartClose.addEventListener('click', () =>{
+    cartForm.classList.remove('active');
+});
+
+    // CART MAPPING FUNCTIONALITY FOR STATIC ITINERARIES**********************************************************************************
+    
+
+
+    // END CART MAPPING FOR STATIC ITINERARIES*******************************************************************************************
 
 // Menu Functionality that doesn't work
 let menu = document.querySelector('#menu-bar');
