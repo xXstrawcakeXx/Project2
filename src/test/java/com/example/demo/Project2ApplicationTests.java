@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import com.revature.model.Itinerary;
 
-
 class Project2ApplicationTests {
 
 	//ITINERARY TESTS
