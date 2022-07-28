@@ -48,6 +48,26 @@
 
     </header>
 
+        <!--Login form section-->
+
+        <div class = "loginFormContainer">
+
+            <img src="images/Exit.jpg" id="form-close"></i>
+    
+    
+            <form action="">
+                <h3>Login Here</h3>
+                <input id = "login-username" class = "box" placeholder="Enter Username">
+                <input id = "login-password" class = "box" placeholder="Enter password">
+                <input type = "submit" value = "Login" class="btn">
+                <p>Forget Password? <a href="#">Click Here</a></p>
+                <p>Wish to Register? <a href="Register.html">Register Here</a></p>
+                
+            </form>
+    
+    
+        </div>
+
     <div id="Account">
     </div>
     <h1 id="header"> Account Information </h1>
@@ -76,8 +96,49 @@
 
     </div>
 
+    <!-- Cart Container-->
+    <div class="cartbox-container">
+        <img src="images/Exit.jpg" id="cart-close"></i>
+            <div class="cart-box">
+                <h2>Shopping Bag</h2>
+                <div class="cart-wrapper">
+                  <div class="cart-item">
+                             <img src="images/AoTLogo.png"> 
+                             <div class="details">
+                                 <h3>Item Name</h3>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  <span class="quantity">Quantity: 1</span>
+                                     <span class="price">Price: $0.00</span>
+                                 </p>
+                             </div>
+                             <div class="cancel"><i class="fas fa-window-close"></i></div>
+                          </div>
+                  <!-- item 2 -->
+                  
+                  <!-- <div class="cart-item">
+                    <img src="images/AoTLogo.png"> 
+                    <div class="details">
+                        <h3>Item Name</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                         <span class="quantity">Quantity: 1</span>
+                            <span class="price">Price: $23.44</span>
+                        </p>
+                    </div>
+                    <div class="cancel"><i class="fas fa-window-close"></i></div>
+                 </div> -->
+
+                 <div id="cartItemContainer">
+
+                 </div>
+
+
+                </div>
+                <div id="subtotal">Subtotal: $<span>0.00</span></div>
+                <div class="checkout">Checkout</div>
+            </div>
     </div>
 <script src="./js/user.js"></script>
 <script src="./js/script.js"></script>
+<script src="./js/cart.js"></script>
 </body>
 </html>

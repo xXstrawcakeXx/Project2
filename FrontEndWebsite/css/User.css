@@ -263,6 +263,114 @@ header .searchBarContainer label:hover{
     cursor: pointer;
 }
 
+/* Cart Container Stuff  ********************************************************************* */
+
+
+.cartbox-container{
+    position: fixed;
+    top: -120%;
+    left: 0;
+    z-index: 10000;
+    min-height: 100vh;
+    width: 100%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartbox-container.active{
+    top:0;
+}
+
+.cartbox-container .cart-box{
+    overflow-y: auto;
+    max-height: 350px;
+    width:24vw;
+    background: #257bec;
+}
+
+.cartbox-container .cart-box h2{
+    font-size: 35px;
+    color:#fff;
+}
+
+.subtotal{
+    text-align: right;
+    padding:5%;
+    color: #fff;
+}
+.checkout {
+    width:95%;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--blue);
+    font-size: large;
+    color: #fff;
+    margin:10px auto;
+    padding:10px 15px;
+}
+
+.cartbox-container #cart-close{
+    position: absolute;
+    border-radius: 100%;
+    object-fit:cover;
+    height:35px;
+    width: 35px;
+    top: 2rem;
+    right: 3rem;
+    font-size: .5rem;
+    color:#fff;
+    cursor: pointer;
+}
+
+
+.cart-item{
+  display:grid;
+  grid-template-columns: 3fr 6fr 1fr;
+  padding:5% 2%;
+  border-bottom:solid 1px lightgray;  
+}
+
+.cart-item img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+}
+.cart-item .details{
+    padding-left:10%;
+    color:#fff;
+}
+
+.cart-item h3{
+  text-align: left; 
+  margin-bottom:5%; 
+  color:#fff;
+}
+
+.cart-item .price{
+display: block;
+text-align: right;
+color:#fff;
+margin-top: 35%; 
+  }
+  
+ .quantity{
+     display: block;
+     margin-top:5%;
+     color:#fff;
+ } 
+
+ .fa-window-close{
+     color: brown;
+ }
+ .cancel{
+     text-align: right;
+ }
+
+
+/* End of Cart Stuff ****************************************************** */
+
 /* Menu Bar Stuff */ /* Keeping this here just in case I get it to work. The odds are not in my favor */
 
 #menu-bar{
