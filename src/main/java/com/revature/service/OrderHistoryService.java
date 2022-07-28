@@ -19,7 +19,6 @@ public class OrderHistoryService {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	static
 	OrderHistoryRepo ohrep;
 	
 	@Autowired
@@ -28,6 +27,7 @@ public class OrderHistoryService {
 	public List<OrderHistory> findAll() {
 		return ohrep.findAll();
 	}
+	
 	public List<OrderHistory> getByUser(User u) {
 		return ohrep.getHistoryOfUser(u.getId());
 	}
@@ -35,9 +35,11 @@ public class OrderHistoryService {
 	public void add(OrderHistory oh) {
 		ohrep.save(oh);
 	}
-	public static void saveAll(List<Itinerary> itinList, User u) {
+	
+	public void saveAll(List<Itinerary> itinList, User u) {
 		for(Itinerary i : itinList) {
 			OrderHistory temp = new OrderHistory();
+			temp.setItinerary(i);
 			temp.setDate(LocalDateTime.now().toString());
 			temp.setPrice(i.getPrice());
 			temp.setUser(u);
