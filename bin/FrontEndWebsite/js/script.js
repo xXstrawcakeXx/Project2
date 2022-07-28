@@ -32,7 +32,7 @@ function submitLogin(event) {
 }
 
 // constant URL
-const URL = "http://localhost:8080";
+const URL = "http://project2-env.eba-yp8rsa4c.us-east-2.elasticbeanstalk.com";
 
 // This is getting the value of what is inputed in the username and password fields
 // and sends a post request to the database
@@ -73,6 +73,13 @@ loginClose.addEventListener('click', () => {
     loginForm.classList.remove('active');
 });
 
+// Cart DropDown Functionality
+    // MOVED TO SEPERATE JS FILE
+
+    // CART MAPPING FUNCTIONALITY FOR STATIC ITINERARIES**********************************************************************************
+
+
+    // END CART MAPPING FOR STATIC ITINERARIES*******************************************************************************************
 
 // Menu Functionality that doesn't work
 let menu = document.querySelector('#menu-bar');
@@ -136,9 +143,10 @@ console.log(itineraryContainer);
            
                 <img src="images/AKLake.JPG" alt="">
                 <div class = "content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
-                    <p>${itinerary.description}</p>
-                    <p> Open Slots: ${itinerary.slots}</p>
+                    <div class = "uniqueID" id="${itinerary.id}"> </div>
+                    <h3 class = "bookname"> <i class="fas fa-map-marker-alt"></i> ${itinerary.destination} </h3>
+                    <p class="bookdescription">${itinerary.description}</p>
+                    <p> Open Slots: <p class = "bookslot"> ${itinerary.slots} </p> </p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -146,8 +154,8 @@ console.log(itineraryContainer);
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="price"> ${itinerary.price} </div>
-                    <a href="#" class="btn">Book Now!</a>
+                    <div class="price bookprice" > ${itinerary.price} </div>
+                    <input type="submit" class="btn bookbtn" value="Book Now!">
                 </div>
            
             `;

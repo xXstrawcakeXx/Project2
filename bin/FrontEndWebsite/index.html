@@ -12,7 +12,7 @@
     <!-- Using cloud repository for stuff like logos, fonts, and icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -32,6 +32,7 @@
             <a href="#packages">packages</a>
             <a href="#services">services</a>
             <a href="#reviews">reviews</a>
+            <a href="User.html">account information</a>
         </nav>
 
         <div class="icons">
@@ -67,6 +68,57 @@
 
     </div>
 
+    <!-- Cart Container-->
+    <div class="cartbox-container">
+        <img src="images/Exit.jpg" id="cart-close"></i>
+            <div class="cart-box">
+                <h2>Shopping Bag</h2>
+                <div class="cart-wrapper">
+                  <div class="cart-item">
+                             <img src="images/AoTLogo.png"> 
+                             <div class="details">
+                                 <h3>Item Name</h3>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  <span class="quantity">Quantity: 1</span>
+                                     <span class="price">Price: $0.00</span>
+                                 </p>
+                             </div>
+                             <div class="cancel"><i class="fas fa-window-close"></i></div>
+                          </div>
+                  <!-- item 2 -->
+                  
+                  <!-- <div class="cart-item">
+                    <img src="images/AoTLogo.png"> 
+                    <div class="details">
+                        <h3>Item Name</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                         <span class="quantity">Quantity: 1</span>
+                            <span class="price">Price: $23.44</span>
+                        </p>
+                    </div>
+                    <div class="cancel"><i class="fas fa-window-close"></i></div>
+                 </div> -->
+
+                 <div id="cartItemContainer">
+
+                 </div>
+
+
+                </div>
+                <div id="subtotal">Subtotal: $<span>0.00</span></div>
+                <div class="checkout">Checkout</div>
+            </div>
+
+        <!-- <div class="box">
+            <h3>Items in Cart</h3>
+
+        </div>
+
+        <div class="box">
+           <div class="subtotal">Subtotal: $0.00</div>
+            <div class="checkout">Checkout</div> 
+        </div> -->
+    </div>
 
     <!-- The Home page Structure-->
     <section class="home" id="home">
@@ -153,13 +205,14 @@
 
             <!--**********************************IMPORTANT*************************************************************************-->
             <!-- Each div class box is == to a package-->
-            <div class="box">
+            <!-- Added unique identification for static packages-->
+            <!-- <div data-id="1" class="box">
 
                 <img src="images/AKLake.JPG" alt="">
                 <div class = "content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> Alaska </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
-                    <p>Open Slots: 0</p>
+                    <h3 class = "bookname"> <i class="fas fa-map-marker-alt"></i> Alaska </h3>
+                    <p class="bookdescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
+                    <p class = "bookslot">Open Slots: 0</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -167,19 +220,19 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="price"> $1200 </div>
-                    <a href="#" class="btn">Book Now!</a>
+                    <div class="price bookprice"> $1200 </div>
+                    <a href="#" class="btn bookbtn" >Book Now!</a>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="box">
+            <!-- <div class="box">
 
                 <img src="images/WillPic1.JPG" alt="">
-                <div class = "content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> Switzerland </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
-                    <p>Open Slots: 0</p>
+                <div data-id="2" class = "content">
+                    <h3 class = "bookname"> <i class="fas fa-map-marker-alt"></i> Switzerland </h3>
+                    <p class="bookdescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
+                    <p class="bookslot">Open Slots: 0</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -187,19 +240,19 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
-                    <div class="price"> $1600 </div>
-                    <a href="#" class="btn">Book Now!</a>
+                    <div class="price bookprice"> $1600 </div>
+                    <a href="#" class="btn bookbtn" id="bookbtn">Book Now!</a>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="box">
+            <!-- <div class="box">
 
                 <img src="images/WillPic2.JPG" alt="">
-                <div class = "content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> Yosemite National Park </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
-                    <p>Open Slots: 0</p>
+                <div data-id="3" class = "content">
+                    <h3 class="bookname"> <i class="fas fa-map-marker-alt"></i> Yosemite National Park </h3>
+                    <p class="bookdescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores soluta quo. Laborum autem laudantium quos quidem doloremque voluptate error pariatur, tenetur odio explicabo. Numquam incidunt voluptate hic quam earum.</p>
+                    <p class="bookslot">Open Slots: 0</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -207,11 +260,11 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
-                    <div class="price"> $800 </div>
-                    <a href="#" class="btn">Book Now!</a>
+                    <div class="price bookprice"> $800 </div>
+                    <a href="#" class="btn bookbtn" id = "bookbtn">Book Now!</a>
                 </div>
 
-            </div>
+            </div> -->
 
             <!--Adding itineraries from backend-->
             <div id="itinerary-container">
@@ -414,7 +467,8 @@
 
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/cart.js"></script>
     
     
 </body>

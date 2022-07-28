@@ -12,7 +12,7 @@
     <!-- Using cloud repository for stuff like logos, fonts, and icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="css/User.css">
+    <link rel="stylesheet" href="./css/user.css">
 </head>
 
 <body>
@@ -29,10 +29,10 @@
 
         <nav class="navbar">
             <a href="index.html">home</a>
-            <a href="booking">book</a>
-            <a href="packages">packages</a>
-            <a href="services">services</a>
-            <a href="reviews">reviews</a>
+            <a href="index.html#booking">book</a>
+            <a href="index.html#packages">packages</a>
+            <a href="index.html#services">services</a>
+            <a href="index.html#reviews">reviews</a>
         </nav>
 
         <div class="icons">
@@ -48,7 +48,7 @@
 
     </header>
 
-    <div id="main">
+    <div id="Account">
     </div>
     <h1 id="header"> Account Information </h1>
 
@@ -58,7 +58,26 @@
 
     <div id="user-container"></div>
 
+    <div class = "updatebox">
+        <button id="updateButton" onclick="toggleUpdateForm()">Update Info</button>
+            <form id = "updatebox" hidden>
+                <p>First Name</p>
+                <input id = "first" type = "first" name="Enter First Name">
+                <p>Last Name</p>
+                <input id = "last" type = "last" name="Enter Last Name">
+                <p>Email</p>
+                <input id = "email" type = "email" name="Enter Email">
+                <p>UserName</p>
+                <input id = "username" type = "username" name="Enter Username">
+                <p>Password</p>
+                <input id="password" type="password" name="Enter Password">
+                <input type="submit" type="" value="Update">
+            </form>
+
     </div>
-<script src="js/user.js"></script>
+
+    </div>
+<script src="./js/user.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
