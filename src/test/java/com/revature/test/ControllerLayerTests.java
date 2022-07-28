@@ -1,6 +1,7 @@
 package com.revature.test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -17,6 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.revature.controller.UserController;
 import com.revature.model.User;
 import com.revature.service.ItineraryService;
@@ -63,8 +67,6 @@ public class ControllerLayerTests {
 			uList.add(dumbU);
 			uList.add(dumbU2);
 		
-		String fName = dumbU.getUsername();
-		
 		Mockito.when(uServ.findAll()).thenReturn(uList);
 		
 		MvcResult result = mockMvc.perform(get("/users"))
@@ -74,6 +76,65 @@ public class ControllerLayerTests {
 		
 		String resStr = result.getResponse().getContentAsString();
 	}
+	
+	//DOESNT WORKKKKKKKKKKKKKKKKK
+	@Test
+	public void findByUsernameRequestTest() throws Exception {
+		User dumbU = new User ("firstName","lastName","username","pass","email@email.com");
+		
+		
+		Mockito.when(uServ.getByUsername(dumbU.getUsername())).thenReturn(dumbU);
+		
+		MvcResult result = mockMvc.perform(get("/users/findQuery/{username}").param("username"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andReturn();
+		
+		String resStr = result.getResponse().getContentAsString();
+	}
+	
+	@Test
+	public void addNewUserTest() throws Exception {
+		User dumbU = new User ("firstName","lastName","username","pass","email@email.com");
+		
+		
+		Mockito.when(uServ.add(dumbU)).thenReturn(dumbU);
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+	    ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+	    String requestJson=ow.writeValueAsString(dumbU);
+		
+		mockMvc.perform(post("/users")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(requestJson))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andReturn();
+		
+	}
+	
+	@Test
+	public void updateUserTest() throws Exception {
+		User dumbU = new User ("firstName","lastName","username","pass","email@email.com");
+		dumbU.setFirstName("firstNameFirstUpdate");
+		
+		Mockito.when(uServ.update(dumbU)).thenReturn(dumbU);
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+	    ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+	    String requestJson=ow.writeValueAsString(dumbU);
+		
+		mockMvc.perform(post("/users")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(requestJson))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andReturn();
+	}
+	
+	
 	
 	
 }
