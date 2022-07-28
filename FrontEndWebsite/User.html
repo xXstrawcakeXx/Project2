@@ -29,10 +29,10 @@
 
         <nav class="navbar">
             <a href="index.html">home</a>
-            <a href="booking">book</a>
-            <a href="packages">packages</a>
-            <a href="services">services</a>
-            <a href="reviews">reviews</a>
+            <a href="index.html#booking">book</a>
+            <a href="index.html#packages">packages</a>
+            <a href="index.html#services">services</a>
+            <a href="index.html#reviews">reviews</a>
         </nav>
 
         <div class="icons">
@@ -48,7 +48,7 @@
 
     </header>
 
-    <div id="main">
+    <div id="Account">
     </div>
     <h1 id="header"> Account Information </h1>
 
@@ -59,7 +59,7 @@
     <div id="user-container"></div>
 
     <div class = "updatebox">
-        <button onclick="toggleUpdateForm()">Update Info</button>
+        <button id="updateButton" onclick="toggleUpdateForm()">Update Info</button>
             <form id = "updatebox" hidden>
                 <p>First Name</p>
                 <input id = "first" type = "first" name="Enter First Name">
@@ -78,5 +78,6 @@
 
     </div>
 <script src="./js/user.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
