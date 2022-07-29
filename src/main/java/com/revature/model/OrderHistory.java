@@ -35,6 +35,8 @@ public class OrderHistory {
 	@JoinColumn(name = "acc_owner", referencedColumnName = "user_id")
 	private User user;
 	
-	
+	@OneToOne
+	@JoinColumn(name = "itin_id",referencedColumnName = "itinerary_id")
+	private Itinerary itinerary;
 	
 }

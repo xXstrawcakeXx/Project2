@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
@@ -9,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.data.ItineraryRepository;
+import com.revature.data.OrderHistoryRepo;
 import com.revature.data.UserRepository;
 import com.revature.exception.UserNotFoundException;
 import com.revature.model.Itinerary;
+import com.revature.model.OrderHistory;
 import com.revature.model.User;
 
 @Service
@@ -24,6 +27,15 @@ public class UserService {
 
 	@Autowired
 	ItineraryRepository itinRepo;
+	
+	@Autowired
+	OrderHistoryRepo ohrep;
+	
+//	private OrderHistoryService ohs;
+//	@Autowired
+//	public void setOrderHistoryService(OrderHistoryService ohs) {
+//		this.ohs = ohs;
+//	}
 	
 
 	// methods that call upon the Repo
@@ -115,8 +127,7 @@ public class UserService {
 		Itinerary itin = itinRepo.findById(itin_id);
 		List<Itinerary> cart = u.getItineraries();
 
-		if (cart.contains(itin)) {
-			cart.remove(itin);
+		if (cart.remove(itin)) {
 			u.setItineraries(cart);
 
 //			userRepo.update(u.getEmail(), u.getFirstName(), u.getLastName(), u.getPassword(), u.getUsername(),
@@ -139,7 +150,15 @@ public class UserService {
 				return null;
 			}
 		}
-		OrderHistoryService.saveAll(cart, userRepo.findById(user_id).get());
+		//this.setOrderHistoryService(new OrderHistoryService());
+		for(Itinerary i : cart) {
+			OrderHistory temp = new OrderHistory();
+			temp.setItinerary(i);
+			temp.setDate(LocalDateTime.now().toString());
+			temp.setPrice(i.getPrice());
+			temp.setUser(u);
+			ohrep.save(temp);
+		}
 		//if not returned null from previous for-loop, then decrease all itin slots in cart by 1
 		for(Itinerary it: cart) {
 				itinRepo.decreaseItinSlot(it.getId());
