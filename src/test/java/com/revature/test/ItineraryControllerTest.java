@@ -163,54 +163,54 @@ public class ItineraryControllerTest {
 //================================================================================================================================================
 
 	
-	@Test
-	public void getImageStringTest() throws Exception {
-
-		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
-		itin.setImage("imageee");
-		
-		//List<Itinerary> uList = new LinkedList<Itinerary>();
-
-	
-		Mockito.when(iServ.findImage(itin.getId())).thenReturn("imageee");
-
-		String result = mockMvc.perform(get("/itineraries/image/{id}", itin.getId())
-				.contentType(MediaType.APPLICATION_JSON)//(MediaType.APPLICATION_JSON))
-				.characterEncoding("UTF-8"))
-				//.getContentAsString(StandardCharsets.UTF_8);
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-				.andReturn()
-				.getResponse()
-				.getContentAsString();
-
-
-	}
+//	@Test
+//	public void getImageStringTest() throws Exception {
+//
+//		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
+//		itin.setImage("imageee");
+//		
+//		//List<Itinerary> uList = new LinkedList<Itinerary>();
+//
+//	
+//		Mockito.when(iServ.findImage(itin.getId())).thenReturn("imageee");
+//
+//		String result = mockMvc.perform(get("/itineraries/image/{id}", itin.getId())
+//				.contentType(MediaType.APPLICATION_JSON)//(MediaType.APPLICATION_JSON))
+//				.characterEncoding("UTF-8"))
+//				//.getContentAsString(StandardCharsets.UTF_8);
+//				.andExpect(status().isOk())
+//				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+//				.andReturn()
+//				.getResponse()
+//				.getContentAsString();
+//
+//
+//	}
 
 //================================================================================================================================================
 
 	
-	@Test
-	public void updateItinTest() throws Exception {
-		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
-		itin.setDestination("London");
-
-		Mockito.when(iServ.update(itin)).thenReturn(itin);
-
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-		String requestJson = ow.writeValueAsString(itin);
-
-		
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/itineraries/update")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON)
-				.content(requestJson);
-		
-		mockMvc.perform(mockRequest)
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.destination", is("London")));
-	}
+//	@Test
+//	public void updateItinTest() throws Exception {
+//		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
+//		itin.setDestination("London");
+//
+//		Mockito.when(iServ.update(itin)).thenReturn(itin);
+//
+//		ObjectMapper mapper = new ObjectMapper();
+//		mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+//		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+//		String requestJson = ow.writeValueAsString(itin);
+//
+//		
+//		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/itineraries/update")
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON)
+//				.content(requestJson);
+//		
+//		mockMvc.perform(mockRequest)
+//				.andExpect(status().isOk())
+//				.andExpect(jsonPath("$.destination", is("London")));
+//	}
 
 }

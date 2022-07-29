@@ -32,7 +32,7 @@ import com.revature.service.OrderHistoryService;
 import com.revature.service.UserService;
 
 @ExtendWith(MockitoExtension.class)
-public class ServiceLayerTests {
+public class ServiceLayerTest {
 	
 	private User user;
 	private List<Itinerary> itinList;
