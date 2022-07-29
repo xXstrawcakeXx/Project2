@@ -55,6 +55,8 @@ public class ControllerLayerTests {
 //	@MockBean 
 //	UserRepository uRep;
 
+//================================================================================================================================================	
+
 	@Test
 	public void findByUsernameTest() throws Exception {
 		User dumbU = new User("firstName", "lastName", "username", "pass", "email@email.com");
@@ -64,6 +66,8 @@ public class ControllerLayerTests {
 
 		mockMvc.perform(get("/users/find/username")).andExpect(status().isOk());
 	}
+
+//================================================================================================================================================	
 
 	@Test
 	public void findAllTest() throws Exception {
@@ -82,6 +86,8 @@ public class ControllerLayerTests {
 		String resStr = result.getResponse().getContentAsString();
 	}
 
+//================================================================================================================================================	
+
 //	@Test
 //	public void findByUsernameRequestTest() throws Exception {
 //		User dumbU = new User ("firstName","lastName","username","pass","email@email.com");
@@ -96,6 +102,8 @@ public class ControllerLayerTests {
 //		
 //		//String resStr = result.getResponse().getContentAsString();
 //	}
+
+//================================================================================================================================================	
 
 	// POST REQUEST
 	@Test
@@ -116,6 +124,8 @@ public class ControllerLayerTests {
 				.andExpect(jsonPath("$.username", is("username")));
 	}
 
+//================================================================================================================================================	
+
 	// PUT REQUEST
 	@Test
 	public void updateUserTest() throws Exception {
@@ -134,6 +144,8 @@ public class ControllerLayerTests {
 
 	}
 
+//================================================================================================================================================	
+
 	// DELETE REQUEST
 	@Test
 	public void deleteUserTest() throws Exception {
@@ -143,9 +155,10 @@ public class ControllerLayerTests {
 		Mockito.when(uServ.delete(dumbU.getId())).thenReturn(true);
 
 		this.mockMvc.perform(delete("/users/delete/{id}", "1").contentType(MediaType.APPLICATION_JSON))
-				// .accept(MediaType.APPLICATION_JSON)
 				.andExpect(status().isOk());
 	}
+
+//================================================================================================================================================	
 
 	// POST REQUEST
 	@Test
@@ -166,11 +179,12 @@ public class ControllerLayerTests {
 				.andExpect(jsonPath("$.password", is("pass")));
 	}
 
+//================================================================================================================================================
+
 	// POST REQUEST
 	@Test
 	public void addToCartTest() throws Exception {
 		User dumbU = new User("firstName", "lastName", "username", "pass", "email@email.com");
-
 		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
 
 		List<Itinerary> itinList = new LinkedList<Itinerary>();
@@ -182,33 +196,67 @@ public class ControllerLayerTests {
 		ObjectMapper mapper = new ObjectMapper();
 
 		mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+
 		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
 		String requestJson = ow.writeValueAsString(dumbU);
 
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.post("/users/addtocart/{itin_id}", dumbU.getItineraries().get(0).getId()).header("id", "0")
-				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).content(requestJson);
+				.post("/users/addtocart/{itin_id}", dumbU.getItineraries().get(0).getId()).
+				header("id", 0)
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON)
+				.content(requestJson);
 
 		mockMvc.perform(mockRequest).andExpect(status().isOk()).andExpect(jsonPath("$.itineraries[0].id", is(0)));
 	}
-	
-	public void deleteFromCartTest() throws Exception{
+
+//================================================================================================================================================	
+
+	//DELETE MAPPING
+	@Test
+	public void deleteFromCartTest() throws Exception {
 		User dumbU = new User("firstName", "lastName", "username", "pass", "email@email.com");
-		dumbU.setId(1);
 		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
 
 		List<Itinerary> itinList = new LinkedList<Itinerary>();
 		itinList.add(itin);
 		dumbU.setItineraries(itinList);
 
-		Mockito.when(uServ.removeFromCart(itin.getId(),dumbU.getId())).thenReturn(true);
+		Mockito.when(uServ.getById(dumbU.getId())).thenReturn(dumbU);
+		Mockito.when(uServ.removeFromCart(itin.getId(), dumbU.getId())).thenReturn(true);
 
-		
-		
-		this.mockMvc.perform(delete("/users/deletefromcart/{id}", "1").contentType(MediaType.APPLICATION_JSON))
-				// .accept(MediaType.APPLICATION_JSON)
+		mockMvc.perform(delete("/users/deletefromcart/{itin_id}", dumbU.getItineraries().get(0).getId())
+				.header("id", 0)
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
+	
+}
+
+//================================================================================================================================================	
+	
+	//DELETE MAPPING
+	@Test
+	public void checkoutTest() throws Exception {
+		User dumbU = new User("firstName", "lastName", "username", "pass", "email@email.com");
+		Itinerary itin = new Itinerary("destination", 5.00, 5, 5.00, 5.00, "I just want to sleep");
+
+		List<Itinerary> itinList = new LinkedList<Itinerary>();
+		itinList.add(itin);
+		dumbU.setItineraries(itinList);
+		
+		Mockito.when(uServ.getById(dumbU.getId())).thenReturn(dumbU);
+		Mockito.when(uServ.checkout(dumbU.getId())).thenReturn(dumbU);
+		
+		mockMvc.perform(delete("/users/checkout/{user_id}", dumbU.getId())
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+		
+		
 		
 	}
 
+
+	
 }
