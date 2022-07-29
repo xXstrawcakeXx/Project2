@@ -49,8 +49,11 @@ checkout.addEventListener('click', (event)=>{
     return{
       id: id , slots: newSlots
     }
+    
   });
   console.log(infoForServer);
+  cartForm.classList.remove('active');
+  alert("Checking out");
 })
 
 cartItemContainer.addEventListener('click', (event)=> {
