@@ -50,11 +50,6 @@ public class ControllerLayerTests {
 //	@MockBean 
 //	UserRepository uRep;
 
-	@BeforeEach
-	void setup() {
-		User dumbU = new User("firstName", "lastName", "username", "pass", "email@email.com");
-
-	}
 
 	@Test
 	public void findByUsernameTest() throws Exception {
