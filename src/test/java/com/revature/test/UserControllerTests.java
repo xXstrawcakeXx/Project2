@@ -41,7 +41,7 @@ import com.revature.service.ItineraryService;
 import com.revature.service.UserService;
 
 @WebMvcTest(UserController.class)
-public class ControllerLayerTests {
+public class UserControllerTests {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -52,8 +52,6 @@ public class ControllerLayerTests {
 	@MockBean
 	private ItineraryService iServ;
 
-//	@MockBean 
-//	UserRepository uRep;
 
 //================================================================================================================================================	
 
@@ -64,7 +62,8 @@ public class ControllerLayerTests {
 
 		Mockito.when(uServ.getByUsername(fName)).thenReturn(dumbU);
 
-		mockMvc.perform(get("/users/find/username")).andExpect(status().isOk());
+		mockMvc.perform(get("/users/find/username"))
+		.andExpect(status().isOk());
 	}
 
 //================================================================================================================================================	
@@ -252,8 +251,6 @@ public class ControllerLayerTests {
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
-		
-		
 		
 	}
 
